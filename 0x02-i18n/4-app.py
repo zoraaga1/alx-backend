@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""2-app module"""
+"""4-app module"""
 
 from flask import Flask, render_template, request
 from flask_babel import Babel
@@ -24,6 +24,7 @@ def get_locale():
     if locale in app.config['LANGUAGES']:
         return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
 
 @app.route('/')
 def index():

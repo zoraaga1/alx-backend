@@ -3,6 +3,7 @@ from flask import Flask
 from flask_babel import Babel
 from 3-app import app, Config
 
+
 class FlaskBabelTestCase(unittest.TestCase):
     def setUp(self):
         """Set up the testing environment"""
@@ -21,6 +22,7 @@ class FlaskBabelTestCase(unittest.TestCase):
         response = self.client.get('/', headers={'Accept-Language': 'fr'})
         self.assertIn(b'Bienvenue chez Holberton', response.data)
         self.assertIn(b'Bonjour monde!', response.data)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""2-app module"""
+"""5-app module"""
 
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, _
@@ -23,6 +23,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app)
 
+
 def get_user():
     """Get user"""
     user_id = request.args.get('login_as')
@@ -31,11 +32,12 @@ def get_user():
         return users.get(user_id)
     return None
 
+
 @app.before_request
 def before_request():
     """Before request"""
-    user = get_user()
     g.user = get_user()
+
 
 @babel.localeselector
 def get_locale():
@@ -45,10 +47,11 @@ def get_locale():
         return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
+
 @app.route('/')
 def index():
     """Index page"""
-    return render_template('3-index.html')
+    return render_template('5-index.html')
 
 
 if __name__ == '__main__':
